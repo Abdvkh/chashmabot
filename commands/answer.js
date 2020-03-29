@@ -12,25 +12,28 @@ CMD*/
 let mLi    = Libs.myLib;
 let lang   = Libs.Lang.get();
 let transl = lang.translations;
-let curOrder    = User.getProperty('curOrder');
+let curOrder = User.getProperty('curOrder');
+let goods = Bot.getProperty('goods');
 
 switch (message) {
    case transl.agr:
-      let types = Object.getOwnPropertyNames(lang[]);
-      let keyboard = mLi.mKeys(types);
+      let categoriesArr = Object.getOwnPropertyNames(goods);
+      let keyboard = mLi.mKeys(categoriesArr, 'bm');
       let last_keyboard = lang.agr + ',' + lang.order + ",\n" + lang.mainmenu;
 
       mLi.bKeys('answer', lang.again, last_keyboard);
 
-      Bot.sendKeyboard(keyboard, lang['text']);
+      Bot.sendKeyboard(keyboard, lang.choice);
+      Bot.runCommand('type');
       break;
    case lang.order:
-      let keyboard = lang.payment.but + ',' + transl.back + ',' + transl.mainmenu;
+      let keyboardp = lang.payment.but + ',' + transl.back + ',' + transl.mainmenu;
       mLi.bKeys('answer', lang.payment.text, keyboard);
 
-      Bot.sendKeyboard(keyboard, lang.payment.text);
+      Bot.sendKeyboard(keyboardp, lang.payment.text);
       Bot.runCommand('payment');
       break;
    default:
-      Bot.runCommand('menu');
+      Bot.sendMessage('Incorrect');
+      Bot.runCommand('answer');
 }
