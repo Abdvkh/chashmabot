@@ -80,7 +80,6 @@ function productsToObj(productsString) {
 publish({
    back: backFunction,
    bKeys: backKeys,
-   createOrg: createOrganization,
    pValid: passwordValid,
    productsToObj: productsToObj,
    rBasket: returnBasket,
