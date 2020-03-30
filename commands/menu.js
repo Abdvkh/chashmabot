@@ -17,7 +17,7 @@ let mLi = Libs.myLib;
 let cur_order = User.getProperty('curOrder');
 let level = User.getGroup();
 
-let mainmenu_but = mLi.mKeys(lang.mainmenu_but);
+let mainmenu_but = mLi.mKeys(lang.mainmenu_but,'');
 
 let basket_keys = tr.clean + ',' + lang.order + '\n,' + tr.mainmenu ;
 let basket_msg = lang.basketlist + cur_order.msg;
