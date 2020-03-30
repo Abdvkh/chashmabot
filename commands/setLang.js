@@ -15,6 +15,7 @@ let uzLang = {
       text: "Korxona adminksiga xish kelibsiz",
       buttons: ["Kategoriya yaratish", 'Narsalar qushish', "Narsa uchirish", "Statistika"]
    },
+   amount: 'Nechita olasiz, yozing yoki tanlang',
    basketlist: "Savatingizdagi narsalar:\n\n",
    bots_stat: 'Botning statistikasi',
    categAdded: 'Kategoriya qushildi',
@@ -64,6 +65,7 @@ let ruLang = {
       buttons: ["Добавить категорию", 'Добавить продукты', "Удалить продукт", "Статистика"],
       text: "Добро пожаловать в админку организации",
    },
+   amount: 'Наберите сколько вам нужно или выберите из кнопок',
    basketlist: "Корзина:\n\n",
    bots_stat: "Статистика по боту",
    categAdded: "Категория добавлена",

@@ -29,9 +29,9 @@ if (itemsArr.includes(message)) {
    User.setProperty('curOrder', curOrder, 'Object');
 
    let itemsKeys = mLi.mKeys(itemsArr, 'bm');
-   mLi.bKeys('item', itemsKeys, curOrder['curCateg']);
+   mLi.bKeys('item', curOrder['curCateg'], itemsKeys);
 
-   Bot.sendMessage(message + '\n' + itemsObj[message]['price'] + '\n[↪](' + itemsObj[message]['photo'] + ')@ChashmaBot');
+   Bot.sendMessage(lang.product.name + ': ' + message + '\n' + lang.product.price + itemsObj[message]['price'] + 'сум\n\n[↪](' + itemsObj[message]['photo'] + ')@ChashmaBot');
    Bot.sendKeyboard(numbers, lang.amount);
    Bot.runCommand('amount');
 } else {

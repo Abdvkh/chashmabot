@@ -17,7 +17,7 @@ let trn   = lang.translations;
 let back = User.getProperty('backKeys');
 let curOrder = User.getProperty('curOrder');
 
-if(message > 0){
+if(typeof message == 'number'){
    curOrder.amount.push(message);
    User.setProperty('curOrder', curOrder, 'Object');
 
