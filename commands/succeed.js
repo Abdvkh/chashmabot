@@ -12,9 +12,9 @@ CMD*/
 let lang = Libs.Lang.get();
 let mLi = Libs.myLib;
 let curOrder = User.getProperty('curOrder');
-let org = mLi.get_org_by_name(curOrder['organization']['name']);
 let user = User.getProperty('user_info');
 let mainmenuButs = mLi.mKeys(lang.mainmenu_but);
+let admin = Bot.getProperty('admin');
 
 user_info['orders'] += 1;
 curOrder.location = options.location.longitude + ',' + options.location.latitude;
@@ -28,6 +28,6 @@ let request = "Заявка от:\n" + "Пользователя: [" + user.user
                "Телефон: " + user.user_number + '\n\nДетали заказа:\n' + curOrder['msg'] +
                "\nНа сумму: " + curOrder['sum'];
 
-Bot.sendInlineKeyboardToChatWithId(org['admin'], keyboards, request);
+Bot.sendInlineKeyboardToChatWithId(admin, keyboards, request);
 Bot.sendMessage(lang.succeed);
 Bot.runCommand('/menu');

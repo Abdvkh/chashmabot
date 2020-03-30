@@ -109,7 +109,7 @@ let ruLang = {
 
 let level = User.getGroup();
 
-if(level == "Boss"){
+if(true  /*level == "Boss"*/){
    Libs.Lang.setup("uz", uzLang);
    Libs.Lang.setup("ru", ruLang);
 
