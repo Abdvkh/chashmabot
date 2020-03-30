@@ -17,7 +17,7 @@ let trn   = lang.translations;
 let back = User.getProperty('backKeys');
 let curOrder = User.getProperty('curOrder');
 let amount = parseInt(message);
-if(!amount.isNaN() && amount > 0){
+if(!isNaN(amount) && amount > 0){
    curOrder.amount.push(message);
    User.setProperty('curOrder', curOrder, 'Object');
 

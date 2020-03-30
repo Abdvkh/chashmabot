@@ -30,7 +30,7 @@ let curOrder = {
 };
 
 User.setProperty('user_info', user_info, 'Object');
-User.setProperty( 'curOrder', curOrder, 'Object' );
+User.setProperty('curOrder', curOrder, 'Object');
 
 switch(message){
   case "🇷🇺Русский":

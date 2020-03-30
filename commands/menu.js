@@ -14,13 +14,13 @@ let tr = lang.translations;
 
 let mLi = Libs.myLib;
 
-let cur_order = User.getProperty('curOrder');
+let curOrder = User.getProperty('curOrder');
 let level = User.getGroup();
 
 let mainmenu_but = mLi.mKeys(lang.mainmenu_but,'');
 
 let basket_keys = tr.clean + ',' + lang.order + '\n,' + tr.mainmenu ;
-let basket_msg = lang.basketlist + cur_order.msg;
+let basket_msg = lang.basketlist + curOrder.msg;
 
 switch (message) {
    case lang.mainmenu_but[0]:
@@ -30,8 +30,8 @@ switch (message) {
       });
       break;
    case lang.mainmenu_but[1]:
-      if (cur_order.has_things){
-         Bot.sendKeyboard(basket_keys, lang.basketlist);
+      if (curOrder.has_things){
+         Bot.sendKeyboard(basket_keys, basket_msg);
          Bot.runCommand('basket');
       } else {
          Bot.sendMessage("Basket is empty");
