@@ -13,8 +13,11 @@ let lang = Libs.Lang.get();
 let mLi = Libs.myLib;
 
 let categories = Bot.getProperty('goods');
-let categoriesArr = Object.keys(categories);
-
+if(categories){
+   let categoriesArr = Object.keys(categories);
+} else {
+   let message = "Main menu";
+}
 let user_info = User.getProperty('user_info');
 
 let mainmenu_but = mLi.mKeys(lang.mainmenu_but, 'm');
