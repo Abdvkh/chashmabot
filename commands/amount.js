@@ -14,10 +14,9 @@ let lang  = Libs.Lang.get();
 let mLi   = Libs.myLib;
 let trn   = lang.translations;
 
-let back = User.getProperty('backKeys');
-let curOrder = User.getProperty('curOrder');
 let amount = parseInt(message);
-if(!isNaN(amount) && amount > 0){
+if(!Number.isNaN(amount) && amount > 0){
+   let curOrder = User.getProperty('curOrder');
    curOrder.amount.push(message);
    User.setProperty('curOrder', curOrder, 'Object');
 
@@ -32,7 +31,15 @@ if(!isNaN(amount) && amount > 0){
    Bot.sendKeyboard(keyboard, trn.again);
    Bot.runCommand('answer');
 }else{
+   let curOrder = User.getProperty('curOrder');
    curOrder['has_things'] = false;
    User.setProperty('curOrder', curOrder, 'Object');
+
+   let goods = Bot.getProperty('goods');
+   let categoriesArr = Object.keys(goods);
+   let typeKeys = mLi.mKeys(categoriesArr, 'bm');
+   mLi.bKeys('type', lang.choice, typeKeys);
+
+   let back = User.getProperty('backKeys');
    mLi.back(back.cmd, back.txt, back.keys, message);
 }

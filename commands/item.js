@@ -35,5 +35,6 @@ if (itemsArr.includes(message)) {
    Bot.sendKeyboard(numbers, lang.amount);
    Bot.runCommand('amount');
 } else {
+   mLi.bKeys('number', lang.number, lang.translations.mainmenu);
    mLi.back(back.cmd, back.txt, back.keys, message);
 }
