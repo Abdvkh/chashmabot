@@ -13,7 +13,7 @@ let lang = Libs.Lang.get();
 let mLi = Libs.myLib;
 let tr = lang.translations;
 
-let mainmenu_but = mLi.mKeys(lang.mainmenu_but, 'm');
+let mainmenu_but = mLi.mKeys(lang.mainmenu_but,'');
 
 Bot.sendKeyboard(mainmenu_but, tr.mainmenu);
 Bot.run({

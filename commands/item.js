@@ -14,7 +14,7 @@ let mLi = Libs.myLib;
 let trn = lang.translations;
 
 let curOrder = User.getProperty('curOrder');
-let back = User.getProperty('back');
+let back = User.getProperty('backKeys');
 let goods = Bot.getProperty('goods');
 
 let itemsObj = goods[curOrder['curCateg']];
@@ -27,7 +27,10 @@ if (itemsArr.includes(message)) {
    curOrder['prices'].push(parseInt(itemsObj[message]['price']));
    User.setProperty('curOrder', curOrder, 'Object');
 
-   Bot.sendMessage(keys, message + '\n' + itemsObj[message]['price'] + '\n[↪](' + itemsObj[message]['photo'] + ')@ChashmaBot');
+   let itemsKeys = mLi.mKeys(itemsArr, 'bm');
+   mLi.bKeys('item', itemsKeys, curOrder['curCateg']);
+
+   Bot.sendMessage(message + '\n' + itemsObj[message]['price'] + '\n[↪](' + itemsObj[message]['photo'] + ')@ChashmaBot');
    Bot.sendKeyboard(numbers, lang.amount);
    Bot.runCommand('amount');
 } else {

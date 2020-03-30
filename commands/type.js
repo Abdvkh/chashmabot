@@ -13,7 +13,7 @@ let lang = Libs.Lang.get();
 let mLi = Libs.myLib;
 
 let curOrder = User.getProperty('curOrder');
-let back = User.getProperty('back');
+let back = User.getProperty('backKeys');
 let goods = Bot.getProperty('goods');
 
 let categoriesArr = Object.keys(goods);

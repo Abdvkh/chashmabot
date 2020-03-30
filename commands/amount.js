@@ -14,7 +14,7 @@ let lang  = Libs.Lang.get();
 let mLi   = Libs.myLib;
 let trn   = lang.translations;
 
-let back = User.getProperty('back');
+let back = User.getProperty('backKeys');
 let curOrder = User.getProperty('curOrder');
 
 if(message > 0){

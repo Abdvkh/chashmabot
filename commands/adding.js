@@ -9,13 +9,13 @@
   aliases:
 CMD*/
 
-let products = Bot.getProperty('products');
+let products = Bot.getProperty('goods');
 
 let productsString = message;
 let productsObj = JSON.parse(productsString);
 
 Object.assign(products, productsObj);
-Bot.setProperty('products');
+Bot.setProperty('goods', products, 'Object');
 
 Bot.sendMessage('Продукты добавлены!');
 Bot.runCommand('/menu');
