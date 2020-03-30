@@ -32,5 +32,7 @@ if(message > 0){
    Bot.sendKeyboard(keyboard, trn.again);
    Bot.runCommand('answer');
 }else{
+   curOrder['has_things'] = false;
+   User.setProperty('curOrder', curOrder, 'Object');
    mLi.back(back.cmd, back.txt, back.keys, message);
 }

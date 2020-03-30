@@ -20,10 +20,7 @@ let user_info = {
 };
 let curOrder = {
     has_things: false,
-    organization: {
-      name: '',
-      type: ''
-   },
+    curCateg: '',
     purchases: [],
     amount: [],
     prices: [],

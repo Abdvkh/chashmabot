@@ -27,6 +27,10 @@ if (exists){
    if (itemsArr) {
       curOrder['curCateg'] = message;
       User.setProperty('curOrder', curOrder, 'Object');
+
+      let typeKeys = mLi.mKeys(categoriesArr, 'bm');
+      mLi.bKeys('type', lang.choice, typeKeys);
+
       let itemsKeys = mLi.mKeys(itemsArr, 'bm');
       Bot.sendKeyboard(itemsKeys, message);
       Bot.runCommand('item');

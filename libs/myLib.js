@@ -38,8 +38,8 @@ function makeKeyboard(array, code){
       }
    }
 
-   if (b > -1) {keyboard += '\n' + lang.translations.back;}
-   if (m > -1) {keyboard += '\n' + ',' + lang.translations.mainmenu;}
+   if (b > -1) {keyboard += '\n' + lang.translations.back + ',';}
+   if (m > -1) {keyboard += lang.translations.mainmenu;}
 
    return keyboard;
 }

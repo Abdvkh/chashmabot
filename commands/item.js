@@ -23,6 +23,7 @@ let itemsArr = Object.keys(itemsObj);
 let numbers = '1,2,3,\n4,5,6,\n7,8,9,\n' + trn.back + ',' + trn.mainmenu;
 
 if (itemsArr.includes(message)) {
+   curOrder['has_things'] = true;
    curOrder['purchases'].push(message);
    curOrder['prices'].push(parseInt(itemsObj[message]['price']));
    User.setProperty('curOrder', curOrder, 'Object');

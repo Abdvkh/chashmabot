@@ -6,7 +6,7 @@
   folder:
   answer:
   keyboard:
-  aliases: asosiy menyu, главное меню, main menu
+  aliases: asosiy menyu, Главное меню, main menu
 CMD*/
 
 let lang = Libs.Lang.get();
