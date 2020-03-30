@@ -16,14 +16,14 @@ let trn   = lang.translations;
 
 let back = User.getProperty('backKeys');
 let curOrder = User.getProperty('curOrder');
-
-if(typeof message == 'number'){
+let amount = parseInt(message);
+if(!amount.isNaN() && amount > 0){
    curOrder.amount.push(message);
    User.setProperty('curOrder', curOrder, 'Object');
 
    mLi.rBasket();
 
-   let curOrder    = User.getProperty('curOrder');
+   let curOrder = User.getProperty('curOrder');
    let keyboard = trn.agr + ',' + lang.order + ",\n" + trn.mainmenu;
 
    mLi.bKeys('amount', trn.again, keyboard);

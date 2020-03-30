@@ -39,6 +39,10 @@ let uzLang = {
       text: "To`lov turini tanglang!",
       but: "Naqd,\nClick,Payme"
    },
+   product: {
+      name: '*Nomi*',
+      price: "*Narxi*",
+   },
    success: "Raqamingiz muvaffaqiyatli qabul qilindi! Raqam: \n",
    super_admin: {
       text: "Adminkaga xush kelibsiz",
@@ -88,6 +92,10 @@ let ruLang = {
       but: "Наличка,\nClick,Payme",
       text: "Выберите вид оплаты",
    },
+   product: {
+      name: '*Наименование*',
+      price: "*Цена*",
+   },   
    success: "Ваш номер был успешно получен! \nНомер: ",
    super_admin: {
       buttons: ["Установить язык", "Создать организацию", "Статистика"],

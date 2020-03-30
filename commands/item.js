@@ -31,9 +31,9 @@ if (itemsArr.includes(message)) {
    let itemsKeys = mLi.mKeys(itemsArr, 'bm');
    mLi.bKeys('item', curOrder['curCateg'], itemsKeys);
 
-   Bot.sendMessage(lang.product.name + ': ' + message + '\n' + lang.product.price + itemsObj[message]['price'] + 'сум\n\n[↪](' + itemsObj[message]['photo'] + ')@ChashmaBot');
+   Bot.sendMessage(lang.product.name + ': ' + message + '\n' + lang.product.price + ': ' + itemsObj[message]['price'] + ' сум\n\n[↪](' + itemsObj[message]['photo'] + ')@ChashmaBot');
    Bot.sendKeyboard(numbers, lang.amount);
    Bot.runCommand('amount');
 } else {
-   mLi.back(back.cmd, back.message, back.keys, message);
+   mLi.back(back.cmd, back.txt, back.keys, message);
 }

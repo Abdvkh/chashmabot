@@ -77,9 +77,25 @@ function productsToObj(productsString) {
    return productsObj;
 }
 
+function emptyBasket(){
+   let curOrder = User.getProperty('curOrder');
+   let curOrder = {
+       has_things: false,
+       curCateg: '',
+       purchases: [],
+       amount: [],
+       prices: [],
+       location: '',
+       msg: '',
+       sum: 0,
+   };
+   User.setProperty( 'curOrder', curOrder, 'Object' );
+}
+
 publish({
    back: backFunction,
    bKeys: backKeys,
+   emptyBask: emptyBasket,
    pValid: passwordValid,
    productsToObj: productsToObj,
    rBasket: returnBasket,
