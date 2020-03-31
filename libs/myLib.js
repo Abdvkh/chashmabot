@@ -63,6 +63,17 @@ function productsToObj(productsString) {
    return productsObj;
 }
 
+function saveBasketDetails(){
+   let curOrder = User.getProperty('curOrder');
+   if(curOrder['msg'] == ''){ curOrder['msg'] =  'Ваш заказ:' }
+
+   for (var i = 0; i < curOrder['amount'].length; i++){
+      curOrder['msg'] += '\n*' + curOrder['purchases'][i] + '*\n' + '\n' + curOrder['amount'][i] + 'x' + curOrder['prices'][i] + ' = ' + curOrder['amount'][i] * curOrder['prices'][i];
+      curOrder['sum'] += curOrder['amount'][i] * curOrder['price'][i];
+   }
+   User.setProperty('curOrder', curOrder, 'Object');
+}
+
 function emptyBasket(){
    let curOrder = User.getProperty('curOrder');
    let curOrder = {
@@ -84,5 +95,6 @@ publish({
    emptyBask: emptyBasket,
    pValid: passwordValid,
    productsToObj: productsToObj,
+   saveBasketDetails: saveBasketDetails,
    mKeys: makeKeyboard
 });
