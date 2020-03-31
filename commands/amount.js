@@ -16,13 +16,13 @@ let trn   = lang.translations;
 
 let amount = parseInt(message);
 if(amount > 0){
-   let curOrder1 = User.getProperty('curOrder');
+   let curOrder = User.getProperty('curOrder');
    curOrder1.amount.push(amount);
-   User.setProperty('curOrder', curOrder1, 'Object');
+   User.setProperty('curOrder', curOrder, 'Object');
 
    mLi.rBasket();
 
-   let curOrder = User.getProperty('curOrder');
+   // let curOrder = User.getProperty('curOrder');
    let keyboard = trn.agr + ',' + lang.order + ",\n" + trn.mainmenu;
 
    mLi.bKeys('amount', trn.again, keyboard);
