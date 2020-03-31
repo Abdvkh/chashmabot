@@ -44,15 +44,6 @@ function makeKeyboard(array, code){
    return keyboard;
 }
 
-function returnBasket(details){
-   if(details.msg == ''){ details.msg =  'Ваш заказ:' }
-   for (var i = 0; i < details.purchases.length; i++){
-      details.msg += '\n*' + details.purchases[i] + '*\n' + '\n' + details.amount[i] + 'x' + details.price[i] + ' = ' + details.amount[i] * details.price[i];
-      details.sum += details.amount[i] * details.price[i];
-   }
-   User.setProperty('curOrder', details, 'Object');
-}
-
 function passwordValid(password){
    let pass = Bot.getProperty('password');
 
@@ -93,6 +84,5 @@ publish({
    emptyBask: emptyBasket,
    pValid: passwordValid,
    productsToObj: productsToObj,
-   rBasket: returnBasket,
    mKeys: makeKeyboard
 });
