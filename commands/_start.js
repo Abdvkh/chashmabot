@@ -9,41 +9,33 @@
   aliases:
 CMD*/
 
+let shop = Libs.Shop;
 let lang = Libs.Lang.get();
-let tr = lang.translations;
 
-let user_info = {
-    user_name: user.first_name,
-    user_id: user.id,
-    user_number: 0,
-    orders: 0
-};
-let curOrder = {
-    has_things: false,
-    curCateg: '',
-    purchases: [],
-    amount: [],
-    prices: [],
-    location: '',
-    msg: '',
-    sum: 0,
-};
+function setLangAndRunMenu(code){
+   Libs.Lang.user.setLang(code);
+   Bot.sendMessage(lang.greet + user.first_name);
+   Bot.runCommand("/menu");
+}
+let order = User.getProperty('order');
 
-User.setProperty('user_info', user_info, 'Object');
-User.setProperty('curOrder', curOrder, 'Object');
+if (order == undefined) {
+   shop.emptyBasket();
+}
+let customer = User.getProperty('customerInfo');
+
+if (user == undefined) {
+   shop.customer.emptyCutsomer();
+}
 
 switch(message){
-  case "🇷🇺Русский":
-    Libs.Lang.user.setLang("ru");
-    Bot.sendMessage(lang.hello + user.first_name + "*!");
-    Bot.runCommand("/menu");
-    break;
-  case "🇺🇿O'zbekcha":
-    Libs.Lang.user.setLang("uz");
-    Bot.sendMessage(lang.hello + user.first_name + "*!");
-    Bot.runCommand("/menu");
-    break;
-  default:
-    Bot.sendMessage("This is not a language to choose. Do it again.");
-    Bot.runCommand('/start');
+   case "🇷🇺Русский":
+      setLangAndRunMenu('ru');
+      break;
+   case "🇺🇿O'zbekcha":
+      setLangAndRunMenu('uz');
+      break;
+   default:
+      Bot.sendMessage(lang.wrongInput);
+      Bot.runCommand('/start');
 }

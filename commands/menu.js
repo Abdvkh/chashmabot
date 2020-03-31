@@ -10,55 +10,53 @@
 CMD*/
 
 let lang = Libs.Lang.get();
-let tr = lang.translations;
+let wordsLikeButton = lang.buttons;
 
-let mLi = Libs.myLib;
+let utils = Libs.Utils;
 
-let curOrder = User.getProperty('curOrder');
+let shop = Libs.Shop;
+let order = shop.getOrderInfo();
+let basketDetails = shop.returnBasketDetails();
+
 let level = User.getGroup();
-
-let mainmenu_but = mLi.mKeys(lang.mainmenu_but,'');
-
-let basket_keys = tr.clean + ',' + lang.order + '\n,' + tr.mainmenu ;
-let basket_msg = lang.basketlist + curOrder.msg;
 
 switch (message) {
    case lang.mainmenu_but[0]:
-      Bot.sendKeyboard( tr.mainmenu , lang.number );
-      Bot.run({
-         command: 'number',
-      });
+      Bot.sendKeyboard(wordsLikeButton.mainmenu , lang.number);
+      Bot.runCommand('number');
       break;
    case lang.mainmenu_but[1]:
-      if (curOrder.has_things){
-         Bot.sendKeyboard(basket_keys, basket_msg);
+      if (!shop.basketIsEmpty()){
+         let basketKeyboard = wordsLikeButton.clean + ',' + wordsLikeButton.send + '\n,' + wordsLikeButton.mainmenu ;
+
+         Bot.sendKeyboard(basketKeyboard, basket_msg);
          Bot.runCommand('basket');
       } else {
          Bot.sendMessage("Basket is empty");
-         Bot.run({
-            command: 'menu',
-         });
+         Bot.runCommand('menu');
       }
       break;
    case lang.mainmenu_but[2]:
-      Bot.runCommand('profile');
+      Bot.runCommand('/profile');
       break;
    case lang.mainmenu_but[3]:
       Bot.runCommand('/help');
       break;
    case lang.mainmenu_but[4]:
-      Bot.sendKeyboard(tr.lang + ',' + tr.mainmenu, lang.mainmenu_but[4])
+      let settingsKeyb = wordsLikeButton.lang + ',' + wordsLikeButton.mainmenu;
+
+      Bot.sendKeyboard(settingsKeyb, lang.mainmenu_but[4])
       Bot.runCommand('settings');
       break;
    case '/admin':
       if(level){
-         Bot.run('/admin');
+         Bot.runCommand('/admin');
          break;
       }
-    default:
+   default:
+      let mainmenuKeyb = utils.makeKeyboard(lang.mainmenu_but,'');
+
       Bot.sendMessage('There is no such command')
-      Bot.sendKeyboard(mainmenu_but , tr.mainmenu);
-      Bot.run({
-         command: 'menu',
-      });
+      Bot.sendKeyboard(mainmenuKeyb , wordsLikeButton.mainmenu);
+      Bot.runCommand('menu');
 }

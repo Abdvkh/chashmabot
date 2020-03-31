@@ -10,15 +10,16 @@
 CMD*/
 
 let lang = Libs.Lang.get();
-let mLi = Libs.myLib;
-let tr = lang.translations;
+let utils = Libs.Utils;
+let wordsLikeButton = lang.buttons;
 
-let mainmenu_but = mLi.mKeys(lang.mainmenu_but,'');
+//makes keyboard from an array
+let menuKeyboard = utils.makeKeyboard(lang.mainmenu_but,'');
 
-Bot.sendKeyboard(mainmenu_but, tr.mainmenu);
+Bot.sendKeyboard(menuKeyboard, wordsLikeButton.mainmenu);
 Bot.run({
    command: 'menu',
    options: {
-      mainmenu_but: mainmenu_but
+      menuKeyboard: menuKeyboard
    }
 });

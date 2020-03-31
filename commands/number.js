@@ -9,43 +9,55 @@
   aliases:
 CMD*/
 
-let lang = Libs.Lang.get();
-let mLi = Libs.myLib;
+let lang = Libs.Lang.get();\
+let wordsLikeButton = lang.buttons;
 
-let categories = Bot.getProperty('goods');
-let categoriesArr = Object.keys(categories);
+let utils = Libs.Utils;
+let shop = Libs.Shop;
+
+let goods = shop.getGoodsInfo();
+let categoriesArr = Object.keys(goods);
 if(!categoriesArr){
    let message = "Main menu";
 }
-let user_info = User.getProperty('user_info');
 
-let mainmenu_but = mLi.mKeys(lang.mainmenu_but, 'm');
-
-let number = message ;
-if(request['contact'] !== null){
-   number = request.contact.phone_number;
+function nextCommand(lang, number, categoriesArr){
+   let categoriesKeyboard = utils.mKeys(categoriesArr, 'bm');
+   Bot.sendMessage(lang.numberAccepted + '\n*' + number + '*');
+   Bot.sendKeyboard(categoriesKeyboard, lang.chooseCategory);
+   Bot.runCommand('category');
 }
 
-if (number > 998000000000 && number < 999000000000){
-   user_info['user_number'] = number;
+function numberHandler(message, request) {
+   if(request['contact'] !== null){
+      return request['contact']['phone_number'];
+   }
+   return message;
+}
 
-   User.setProperty("user_info", user_info, "Object");
+function numberEnteredWrongly(lang) {
+   Bot.sendMessage(lang.numberIncorrect);
+   Bot.sendMessage(lang.enterNumber);
+   Bot.runCommand("number");
+}
 
-   keyboard = mLi.mKeys(categoriesArr, 'bm');
+let number = numberHandler(message, request);
+let numberIsValid =number > 998000000000 && number < 999000000000;
+let messageIsMenu = message == wordsLikeButton.mainmenu
 
-   mLi.bKeys('number', lang.number, lang.translations.mainmenu);
-
-   Bot.sendMessage(lang.success + '\n*' + number + '*');
-   Bot.sendKeyboard(keyboard, lang.choice);
-   Bot.run({
-      command:'type',
-   });
+if (numberIsValid){
+   utils.previousCommandDetails(
+      'number',
+      lang.number,
+      wordsLikeButton.mainmenu
+   );
+   shop.customer.phoneNumber(number);
+   nextCommand(lang, number, categoriesArr);
 } else {
-   if(message == lang.translations.mainmenu){
-      mLi.back('/menu', lang.translations.mainmenu, mainmenu_but, message);
+   if(messageIsMenu){
+      let mainmenuKeyb = mLi.mKeys(lang.mainmenu_but, 'm');
+      utils.goBackOrMainMenu('/menu', wordsLikeButton.mainmenu, mainmenuKeyb, message);
    } else {
-      Bot.sendMessage(lang.error);
-      Bot.sendMessage(lang.number);
-      Bot.runCommand("number");
+      numberEnteredWrongly(lang);
    }
 }

@@ -10,10 +10,11 @@
 CMD*/
 
 let lang = Libs.Lang.get();
-let mLi = Libs.myLib;
+let utils = Libs.Utils;
+let shop = Libs.Shop;
 
 let curOrder = User.getProperty('curOrder');
-let back = User.getProperty('backKeys');
+let back = User.getProperty('backKeywords');
 let goods = Bot.getProperty('goods');
 
 let categoriesArr = Object.keys(goods);
@@ -28,16 +29,16 @@ if (exists){
       curOrder['curCateg'] = message;
       User.setProperty('curOrder', curOrder, 'Object');
 
-      let typeKeys = mLi.mKeys(categoriesArr, 'bm');
-      mLi.bKeys('type', lang.choice, typeKeys);
+      let typeKeys = utils.mKeys(categoriesArr, 'bm');
+      utils.bKeys('type', lang.choice, typeKeys);
 
-      let itemsKeys = mLi.mKeys(itemsArr, 'bm');
+      let itemsKeys = utils.mKeys(itemsArr, 'bm');
       Bot.sendKeyboard(itemsKeys, message);
       Bot.runCommand('item');
    } else {
       Bot.sendMessage(lang.in_dev);
-      mLi.back('type', lang.type.text, back.keys, 'Назад');
+      utils.back('type', lang.type.text, back.keys, 'Назад');
    }
 } else {
-   mLi.back(back.cmd, back.txt, back.keys, message);
+   utils.back(back.cmd, back.txt, back.keys, message);
 }
