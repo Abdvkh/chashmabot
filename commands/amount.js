@@ -15,30 +15,28 @@ let mLi   = Libs.myLib;
 let trn   = lang.translations;
 
 let amount = parseInt(message);
+let curOrder = User.getProperty('curOrder');
+
 if(amount > 0){
-   let curOrder = User.getProperty('curOrder');
    curOrder['amount'].push(amount);
-   User.setProperty('curOrder', curOrder, 'Object');
-   let details = User.getProperty('curOrder');
 
-   if(details['msg'] == ''){ details['msg'] =  'Ваш заказ:' }
-   for (var i = 0; i < details.['purchases'].length; i++){
-      details['msg'] += '\n*' + details.['purchases'][i] + '*\n' + '\n' + details['amount'][i] + 'x' + details['prices'][i] + ' = ' + details['amount'][i] * details['prices'][i];
-      details['sum'] += details['amount'][i] * details['price'][i];
+   if(curOrder['msg'] == ''){ curOrder['msg'] =  'Ваш заказ:' }
+
+   for (var i = 0; i < curOrder['purchases'].length; i++){
+      curOrder['msg'] += '\n*' + curOrder['purchases'][i] + '*\n' + '\n' + curOrder['amount'][i] + 'x' + curOrder['prices'][i] + ' = ' + curOrder['amount'][i] * curOrder['prices'][i];
+      curOrder['sum'] += curOrder['amount'][i] * curOrder['price'][i];
    }
-   User.setProperty('curOrder', details, 'Object');
+   let msg = curOrder['msg'];
+   User.setProperty('curOrder', curOrder, 'Object');
 
-
-   let curOrderChanged = User.getProperty('curOrder');
    let keyboard = trn.agr + ',' + lang.order + ",\n" + trn.mainmenu;
 
    mLi.bKeys('amount', trn.again, keyboard);
 
-   Bot.sendMessage(curOrderChanged['msg']);
+   Bot.sendMessage(msg);
    Bot.sendKeyboard(keyboard, trn.again);
    Bot.runCommand('answer');
 }else{
-   let curOrder = User.getProperty('curOrder');
    curOrder['has_things'] = false;
    curOrder['purchases'].pop();
    curOrder['prices'].pop();
@@ -50,4 +48,5 @@ if(amount > 0){
    let goods = Bot.getProperty('goods');
    let categoriesArr = Object.keys(goods);
    let typeKeys = mLi.mKeys(categoriesArr, 'bm');
-   mLi.bKeys('type', lang.choice, typeKeys);}
+   mLi.bKeys('type', lang.choice, typeKeys);
+}
