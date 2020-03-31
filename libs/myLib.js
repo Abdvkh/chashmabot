@@ -44,8 +44,7 @@ function makeKeyboard(array, code){
    return keyboard;
 }
 
-function returnBasket(){
-   let details = User.getProperty('curOrder');
+function returnBasket(details){
    if(details.msg == ''){ details.msg =  'Ваш заказ:' }
    for (var i = 0; i < details.purchases.length; i++){
       details.msg += '\n*' + details.purchases[i] + '*\n' + '\n' + details.amount[i] + 'x' + details.price[i] + ' = ' + details.amount[i] * details.price[i];

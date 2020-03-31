@@ -17,10 +17,10 @@ let trn   = lang.translations;
 let amount = parseInt(message);
 if(amount > 0){
    let curOrder = User.getProperty('curOrder');
-   curOrder1.amount.push(amount);
+   curOrder.amount.push(amount);
    User.setProperty('curOrder', curOrder, 'Object');
-
-   mLi.rBasket();
+   let curOrderChanged = User.getProperty('curOrder');
+   mLi.rBasket(curOrderChanged);
 
    // let curOrder = User.getProperty('curOrder');
    let keyboard = trn.agr + ',' + lang.order + ",\n" + trn.mainmenu;
