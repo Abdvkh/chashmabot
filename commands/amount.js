@@ -16,9 +16,9 @@ let trn   = lang.translations;
 
 let amount = parseInt(message);
 if(!Number.isNaN(amount) && amount > 0){
-   let curOrder = User.getProperty('curOrder');
-   curOrder.amount.push(message);
-   User.setProperty('curOrder', curOrder, 'Object');
+   let curOrder1 = User.getProperty('curOrder');
+   curOrder1.amount.push(amount);
+   User.setProperty('curOrder', curOrder1, 'Object');
 
    mLi.rBasket();
 
@@ -33,6 +33,8 @@ if(!Number.isNaN(amount) && amount > 0){
 }else{
    let curOrder = User.getProperty('curOrder');
    curOrder['has_things'] = false;
+   curOrder.purchases.pop();
+   curOrder.prices.pop();
    User.setProperty('curOrder', curOrder, 'Object');
 
    let goods = Bot.getProperty('goods');
