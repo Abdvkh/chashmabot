@@ -46,15 +46,11 @@ function makeKeyboard(array, code){
 
 function returnBasket(){
    let details = User.getProperty('curOrder');
-
-   if(details.msg == ''){ details.msg =  'Ваш заказ из кафе *Everest Burger*:' }
-   if(details.sum == 0){ details.sum = 0 }
-
+   if(details.msg == ''){ details.msg =  'Ваш заказ:' }
    for (var i = 0; i < details.purchases.length; i++){
       details.msg += '\n*' + details.purchases[i] + '*\n' + '\n' + details.amount[i] + 'x' + details.price[i] + ' = ' + details.amount[i] * details.price[i];
       details.sum += details.amount[i] * details.price[i];
    }
-
    User.setProperty('curOrder', details, 'Object');
 }
 

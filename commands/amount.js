@@ -15,7 +15,7 @@ let mLi   = Libs.myLib;
 let trn   = lang.translations;
 
 let amount = parseInt(message);
-if(!Number.isNaN(amount) && amount > 0){
+if(amount > 0){
    let curOrder1 = User.getProperty('curOrder');
    curOrder1.amount.push(amount);
    User.setProperty('curOrder', curOrder1, 'Object');
@@ -37,11 +37,10 @@ if(!Number.isNaN(amount) && amount > 0){
    curOrder.prices.pop();
    User.setProperty('curOrder', curOrder, 'Object');
 
+   let back = User.getProperty('backKeys');
+   mLi.back(back.cmd, back.txt, back.keys, message);
+
    let goods = Bot.getProperty('goods');
    let categoriesArr = Object.keys(goods);
    let typeKeys = mLi.mKeys(categoriesArr, 'bm');
-   mLi.bKeys('type', lang.choice, typeKeys);
-
-   let back = User.getProperty('backKeys');
-   mLi.back(back.cmd, back.txt, back.keys, message);
-}
+   mLi.bKeys('type', lang.choice, typeKeys);}
