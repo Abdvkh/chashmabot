@@ -1,26 +1,37 @@
 let LIB_PREFIX = 'utils_';
 
-function goBackOrMainMenu(command, text, keyboards, message){
+//returns previously saved command details
+function getPreviousCommand() {
+   return User.getProperty('previousCommand');
+}
+
+//on wrong input sends a message and runs given command
+function onWrongInput(command) {
+   let lang = Libs.Lang.get();
+   let wrongInput = wrongInput == undefined ? lang.wrongInput : "Wrong input!";
+   Bot.sendMessage(wrongInput);
+   Bot.runCommand(command);
+}
+
+//runs the given command or menu regarding to message
+function runCommandOrMainMenu(command, message){
    let lang = Libs.Lang.get();
    let wordsLikeButton = lang.buttons;
 
    if(message == wordsLikeButton.mainmenu){
-      Bot.runCommand('/menu');
-   } else {
-      Bot.sendKeyboard(keyboards, text);
-      Bot.runCommand(command);
+      return Bot.runCommand('/menu');
    }
+   Bot.sendKeyboard(command['btns'], command['txt']);
+   Bot.runCommand(command['cmd']);
 }
 
-function previousCommandDetails(cmd, txt, keys){
-   let backKeywords = {
-      cmd: cmd,
-      txt: txt,
-      keys: keys
-   };
-   User.setProperty('backKeywords', backKeywords,'Object');
+//saves command details to run in go back function
+function saveAsPreviousCommandDetails(command){
+   User.setProperty('previousCommand', command,'Object');
 }
 
+//makes keyboard from an array
+//adds 'back' and 'main menu' button regarding to code
 function makeKeyboard(buttonsArray, code){
    let lang = Libs.Lang.get();
    let keyboard = '';
@@ -42,16 +53,18 @@ function makeKeyboard(buttonsArray, code){
    return keyboard;
 }
 
-function passwordValid(password){
+//checks whether given password is valid or not
+function passwordIsValid(password){
    let pass = Bot.getProperty('password');
-
    if(password==pass){return true;}
    return false;
 }
 
 publish({
-   goBackOrMainMenu: goBackOrMainMenu,
-   previousCommandDetails: previousCommandDetails,
+   getPreviousCommand: getPreviousCommand,
+   runCommandOrMainMenu: runCommandOrMainMenu,
+   savePreviousCommand: saveAsPreviousCommandDetails,
    passwordIsValid: passwordIsValid,
    makeKeyboard: makeKeyboard,
+   onWrongInput: onWrongInput,
 });

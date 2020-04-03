@@ -1,5 +1,5 @@
 /*CMD
-  command: basket
+  command: gotOrderMenuCommand
   help:
   need_reply: true
   auto_retry_time:
@@ -9,7 +9,6 @@
   aliases:
 CMD*/
 
-let lang = Libs.Lang.get();
 let trn = lang.translations;
 
  switch (message) {
