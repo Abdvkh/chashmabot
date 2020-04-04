@@ -13,3 +13,17 @@ let lang = Libs.Lang.get();
 let shop = Libs.Shop;
 let utils = Libs.Utils;
 let wordsLikeButton = lang.buttons;
+
+if (message == wordsLikeButton.mainmenu) {
+   return Bot.runCommand('/menu');
+}
+
+if (message == wordsLikeButton.back) {
+   let previousCommand = utils.getPreviousCommand();
+   let commandToRun = {
+      name: previousCommand.cmd,
+      text: previousCommand.txt,
+      keyboard: previousCommand.btns
+   }
+   utils.runCommandWithKeyboard(commandToRun);
+}

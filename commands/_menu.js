@@ -9,7 +9,9 @@
   aliases: asosiy menyu, Главное меню, main menu
 CMD*/
 
-let menuKeyboard = utils.makeKeyboard(lang.mainMenuButtons,'');
-
-Bot.sendKeyboard(menuKeyboard, wordsLikeButton.mainmenu);
-Bot.run('menu');
+let command = {
+   btns: utils.makeKeyboard(lang.mainMenuButtons,''),
+   txt: wordsLikeButton.mainmenu,
+   cmd: 'getMenuKeyword'
+}
+utils.runCommandWithKeyboard(command);

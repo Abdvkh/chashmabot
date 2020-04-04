@@ -13,14 +13,8 @@ function onWrongInput(command) {
    Bot.runCommand(command);
 }
 
-//runs the given command or menu regarding to message
-function runCommandOrMainMenu(command, message){
-   let lang = Libs.Lang.get();
-   let wordsLikeButton = lang.buttons;
-
-   if(message == wordsLikeButton.mainmenu){
-      return Bot.runCommand('/menu');
-   }
+//runs the given command
+function runCommandWithKeyboard(command){
    Bot.sendKeyboard(command['btns'], command['txt']);
    Bot.runCommand(command['cmd']);
 }
@@ -62,7 +56,7 @@ function passwordIsValid(password){
 
 publish({
    getPreviousCommand: getPreviousCommand,
-   runCommandOrMainMenu: runCommandOrMainMenu,
+   runCommandWithKeyboard: runCommandWithKeyboard,
    savePreviousCommand: saveAsPreviousCommandDetails,
    passwordIsValid: passwordIsValid,
    makeKeyboard: makeKeyboard,

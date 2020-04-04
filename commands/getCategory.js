@@ -9,8 +9,6 @@
   aliases:
 CMD*/
 
-let curOrder = shop.getInstance('order');
-let previousCommand = utils.getPreviousCommand();
 let goods = shop.getInstance('goods');
 let categoriesArr = Object.keys(goods);
 let category = message;
@@ -27,29 +25,20 @@ if (categExists){
    } else {
       thisCategoryInDevelopment();
    }
-} else {
-   runPreviousCommandOrMainMenu();
 }
 
 function nextCommand() {
-   let itemsKeyboard = utils.makeKeyboard(itemsArr, 'bm');
-   Bot.sendKeyboard(itemsKeyboard, category);
-   Bot.runCommand('gotItem');
-}
-
-function runPreviousCommandOrMainMenu() {
-   let commandToRun = {
-      name: previousCommand.cmd,
-      text: previousCommand.txt,
-      keyboard: previousCommand.btns
-   }
-   utils.runCommandOrMainMenu(commandToRun, category);
+   utils.runCommandWithKeyboard({
+      btns: utils.makeKeyboard(itemsArr, 'bm'),
+      txt: category,
+      cmd: 'getItem'
+   });
 }
 
 function setPreviousCommand() {
    let categoryKeyboard = utils.makeKeyboard(categoriesArr, 'bm');
    let previousCommand = {
-      cmd: 'gotCategory',
+      cmd: 'getCategory',
       txt: lang.choice,
       btns: categoryKeyboard
    }
@@ -58,11 +47,10 @@ function setPreviousCommand() {
 
 function thisCategoryInDevelopment() {
    Bot.sendMessage(lang.in_dev);
-   let categoriesKeyboard = utils.makeKeyboard(categoriesArr, 'bm');
-   let gotCategoryCommand = {
-      name: 'gotCategory',
-      text: lang.chooseCategory,
-      keyboard: categoriesKeyboard
+   let getCategoryCommand = {
+      cmd: 'getCategory',
+      txt: lang.chooseCategory,
+      btns: utils.makeKeyboard(categoriesArr, 'bm')
    }
-   utils.runCommandOrMainMenu(gotCategoryCommand, 'Назад');
+   utils.runCommandWithKeyboard(getCategoryCommand);
 }

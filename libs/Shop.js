@@ -8,10 +8,8 @@ function orderIsEmpty(){
 function setup() {
    let order = User.getProperty('order');
    let customer = User.getProperty('customerInfo');
-   if (order == undefined && user == undefined) {
-      reset('order');
-      reset('customer');
-   }
+   if (order == undefined) { reset('order') }
+   if (user == undefined) { reset('customer') }
 }
 
 function setCurrentCategory(category) {
