@@ -10,6 +10,7 @@
 CMD*/
 
 let customer = utils.getInstance('customer');
+let order = utils.getInstance('order');
 let orderDetails = shop.customer.getOrderDetails();
 let admin = Bot.getProperty('admin');
 
@@ -26,7 +27,8 @@ let keyboard = [
 let requestFromUser = "Заявка от:" + "\n" + "Пользователя: "+
 "[" + customer.name + "](tg://user?id=" + Srting(customer.id) + ")" +
 "\nТелефон: " + String(customer.phoneNumber) +
-'\n\nДетали заказа:\n' + orderDetails;
+'\n\nДетали заказа:\n' + orderDetails +
+'\nТип оплаты: ' + order['paymentType'];
 
 Bot.sendInlineKeyboardToChatWithId(admin, keyboard, requestFromUser);
 Bot.sendMessage(lang.orderAccepted);

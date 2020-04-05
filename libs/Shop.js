@@ -11,6 +11,12 @@ function addProductToOrder(product) {
    User.setProperty('order', order, 'Object');
 }
 
+function setOrderPaymentType(paymentType) {
+   let order = User.getProperty('order');
+   order['paymentType'] = paymentType;
+   User.setProperty('order', order, 'Object');
+}
+
 function setUserLocation(locationObj){
    let customer = User.getProperty('customerInfo');
    customer['orders'] += 1;
@@ -128,6 +134,7 @@ publish({
    customer: {
       addToOrder: addProductToOrder,
       setUserLocation: setUserLocation,
+      setOrderPaymentType: setOrderPaymentType,
       getOrderDetails: getOrderDetails,
       orderIsEmpty: orderIsEmpty,
       phoneNumber: setPhoneNumber,
