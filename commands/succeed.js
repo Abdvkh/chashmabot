@@ -9,25 +9,25 @@
   aliases:
 CMD*/
 
-let lang = Libs.Lang.get();
-let mLi = Libs.myLib;
-let curOrder = User.getProperty('curOrder');
-let user = User.getProperty('user_info');
-let mainmenuButs = mLi.mKeys(lang.mainmenu_but, '');
+let customer = utils.getInstance('customer');
+let orderDetails = shop.customer.getOrderDetails();
 let admin = Bot.getProperty('admin');
 
-user_info['orders'] += 1;
-curOrder.location = options.location.longitude + ',' + options.location.latitude;
-User.setProperty('curOrder', curOrder,'Object');
+let user_location = {
+   longitude: options.location.longitude,
+   latitude: options.location.latitude
+};
+shop.customer.setUserLocation(user_location);
 
-let keyboards = [
+let keyboard = [
    {text: 'Принять', command:'order a|' + user.telegramid},
    {text: 'Отказать', command:'order r|' + user.telegramid},
 ];
-let request = "Заявка от:\n" + "Пользователя: [" + user.user_name + "](tg://user?id=" + user.user_id + ")\n" +
-               "Телефон: " + user.user_number + '\n\nДетали заказа:\n' + curOrder['msg'] +
-               "\nНа сумму: " + curOrder['sum'];
+let requestFromUser = "Заявка от:" + "\n" + "Пользователя: "+
+"[" + customer.name + "](tg://user?id=" + Srting(customer.id) + ")" +
+"\nТелефон: " + String(customer.phoneNumber) +
+'\n\nДетали заказа:\n' + orderDetails;
 
-Bot.sendInlineKeyboardToChatWithId(admin, keyboards, request);
-Bot.sendMessage(lang.succeed);
+Bot.sendInlineKeyboardToChatWithId(admin, keyboard, requestFromUser);
+Bot.sendMessage(lang.orderAccepted);
 Bot.runCommand('/menu');

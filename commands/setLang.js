@@ -10,7 +10,6 @@
 CMD*/
 
 let uzLang = {
-   again: "Yana biror nima qo`shmoqchimisiz?",
    basket: {
       added: "Narsangiz savatga solindi!",
       string: "Savat",
@@ -35,9 +34,9 @@ let uzLang = {
    chooseCategory: "Menyudan kategoriya tanlab oling",
    chooseItem: "Tovarni tanlang",
    deliveryPrice: "Yetkazib berish narxi - ",//COST MUST BE WRITTEN
+   enterAmount: 'Nechita olasiz, yozing yoki tanlang',
    enterNumber: "Iltimos telefon raqamingizni kiriting, bu bizga siz bilan aloqaga chiqishga kerak bo'ladi! \nMisol: +998901234567",
    exclamation_error: "'!' belgisi quyilmagan, iltimos to`girlang!",
-   getAmount: 'Nechita olasiz, yozing yoki tanlang',
    greet: "Assalomu aleykum " ,
    in_dev: "Rivojlanishda...",
    itemsToCategAdded: "Kategoriyaga!{narsalar} qushildi",
@@ -46,31 +45,31 @@ let uzLang = {
       text:"Iltimos yetkazib berish manzilini quyidagi rasmda ko`rsatilganidek jo`nating, yoki yozuv shaklida qoldiring!",
    },
    mainMenuButtons: ["Buyurtma berish", "Savatni ko`rish", "Mening profilim", "Yordam", "Sozlanma"],
+   moreItems: "Yana biror nima qo`shmoqchimisiz?",
    numberAccepted: "Raqamingiz muvaffaqiyatli qabul qilindi! Raqam: \n",
    numberIncorrect: "Raqamingizni formatga to'g'irlab jo'nating!",
    orderAccepted: "Rahmat! Sizning buyurtmangiz qabul qilindi! Buyurtmani tasdiqlash uchun operator qo`ng'iroqini kuting. \nBuyurtma raqamingiz: ",
    payment:{
+      buttons: ["Naqd","Click","Payme"],
       text: "To`lov turini tanglang!",
-      but: "Naqd,\nClick,Payme"
    },
    product: {
       name: '*Nomi*',
       price: "*Narxi*",
    },
    super_admin: {
+      buttons: ["Til urnatish", "Korxona yaratish", "Statistika"],
       text: "Adminkaga xush kelibsiz",
-      buttons: ["Til urnatish", "Korxona yaratish", "Statistika"]
    },
    wrongInput: 'Hato komanda kiritildi, iltimos tog`girlang'
 };
 
 let ruLang = {
-   again: "Еще чего нибудь желаете?",
    basket: {
       added: "Добавлено в корзину!",
+      empty: "Корзина пуста",
       string: "Корзина",
       sum: "Итого: ",
-      empty: "Корзина пуста"
    },
    bots_stat: "Статистика по боту",
    buttons: {
@@ -90,9 +89,9 @@ let ruLang = {
    chooseCategory: "Выберите категорию",
    chooseItem: "Выберите товар",
    deliveryPrice: "Стоимость доставки - ",//COST MUST BE WRITTEN
+   enterAmount: 'Наберите сколько вам нужно или выберите из кнопок',
    enterNumber: "Пожалуйстa, наберите ваш номер тлефона, это необходимо для дальнейшей связи с вами! \nПример: `+998901234567`",
    exclamation_error: "Не введен '!' знак между категорией и продуктами, пожалуйста исправьте!",
-   getAmount: 'Наберите сколько вам нужно или выберите из кнопок',
    greet: "Здравствуйте ",
    in_dev: "В разработке...",
    itemsToCategAdded: "В Категорию!{Добавлены продукты}",
@@ -101,11 +100,12 @@ let ruLang = {
       text: "Пожалуста отправьте вашу геолокация, как показано на данном рисунке, или просто напишите адрес куда осуществляется доставка!",
    },
    mainMenuButtons: ["Заказать", "Корзина", "Мой профиль", "Помощь", "Настройки"],
+   moreItems: "Еще чего нибудь желаете?",
    numberAccepted: "Ваш номер был успешно получен! \nНомер: ",
    numberIncorrect: "Перепроверьте и отправьте свой номер заново!",
    orderAccepted: "Спасибо! Ваша заявка принята, ждите звонка оператора!\n Номер заказа: ",
    payment: {
-      but: "Наличка,\nClick,Payme",
+      buttons: ["Наличка","Click","Payme"],
       text: "Выберите вид оплаты",
    },
    product: {
@@ -122,5 +122,5 @@ if(true  /*level == "Boss"*/){
    Libs.Lang.setup("ru", ruLang);
 
    Bot.sendMessage("Languages are successfully set!");
-   Bot.runCommand("admin");
+   Bot.runCommand("reset");
 }

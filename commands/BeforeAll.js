@@ -24,6 +24,6 @@ if (message == wordsLikeButton.back) {
       name: previousCommand.cmd,
       text: previousCommand.txt,
       keyboard: previousCommand.btns
-   }
+   };
    utils.runCommandWithKeyboard(commandToRun);
 }

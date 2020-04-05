@@ -40,9 +40,9 @@ function makeKeyboard(buttonsArray, code){
       }
    }
    //adds back button
-   if (back) {keyboard += '\n' + lang.translations.back + ',';}
+   if (back) {keyboard += '\n' + lang.buttons.back + ',';}
    //adds mainmenu button
-   if (menu) {keyboard += lang.translations.mainmenu;}
+   if (menu) {keyboard += lang.buttons.mainmenu;}
 
    return keyboard;
 }

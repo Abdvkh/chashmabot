@@ -18,7 +18,7 @@ if(!categoriesArr){
 }
 
 let phoneNumber = getPhoneNumberHandler();
-let phoneNumberIsValid = phoneNumber > 998000000000 && phoneNumber < 999000000000;
+let phoneNumberIsValid = parseInt(phoneNumber) > 998000000000 && parseInt(phoneNumber) < 999000000000;
 
 if (phoneNumberIsValid){
    utils.savePreviousCommand({
@@ -29,7 +29,7 @@ if (phoneNumberIsValid){
    shop.customer.phoneNumber(phoneNumber);
    nextCommand();//getCategory
 } else {
-   getPhoneNumberEnteredWrongly();
+   phoneNumberEnteredWrongly();
 }
 
 function nextCommand(){
@@ -48,7 +48,7 @@ function getPhoneNumberHandler() {
    return message;
 }
 
-function getPhoneNumberEnteredWrongly() {
+function phoneNumberEnteredWrongly() {
    Bot.sendMessage(lang.numberIncorrect);
    Bot.sendMessage(lang.enterNumber);
    Bot.runCommand("getPhoneNumber");

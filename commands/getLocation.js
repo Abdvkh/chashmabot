@@ -1,5 +1,5 @@
 /*CMD
-  command: location
+  command: getLocation
   help:
   need_reply:
   auto_retry_time:
@@ -9,15 +9,14 @@
   aliases: mening joylashuvim, моё местоположение
 CMD*/
 
-let lang = Libs.Lang.get();
-
+let myLocationBtn = utils.makeKeyboard(lang.location.buttons, 'bm');
 Api.sendMessage({
    chat_id: request.user.telegramid,
    text: lang.location.text,
    reply_markup: {
                   keyboard: [
                         [{
-                           text: lang.location.button, request_location: true
+                           text: myLocationBtn, request_location: true
                         }]
                   ],
                   resize_keyboard: true

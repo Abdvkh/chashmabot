@@ -13,5 +13,5 @@ let command = {
    btns: utils.makeKeyboard(lang.mainMenuButtons,''),
    txt: wordsLikeButton.mainmenu,
    cmd: 'getMenuKeyword'
-}
+};
 utils.runCommandWithKeyboard(command);

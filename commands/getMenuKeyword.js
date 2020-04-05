@@ -34,7 +34,7 @@ switch (passedMenuKeyword) {
          break;
       }
    default:
-      utils.onWrongInput('/menu')
+      utils.onWrongInput('/menu');
 }
 
 function runGetPhoneNumber(){

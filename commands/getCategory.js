@@ -41,7 +41,7 @@ function setPreviousCommand() {
       cmd: 'getCategory',
       txt: lang.choice,
       btns: categoryKeyboard
-   }
+   };
    utils.savePreviousCommand(previousCommand);
 }
 
@@ -51,6 +51,6 @@ function thisCategoryInDevelopment() {
       cmd: 'getCategory',
       txt: lang.chooseCategory,
       btns: utils.makeKeyboard(categoriesArr, 'bm')
-   }
+   };
    utils.runCommandWithKeyboard(getCategoryCommand);
 }

@@ -5,6 +5,19 @@ function orderIsEmpty(){
    return order == undefined || order['products'].length == 0;
 }
 
+function addProductToOrder(product) {
+   let order = User.getProperty('order');
+   order['products'].push(product);
+   User.setProperty('order', order, 'Object');
+}
+
+function setUserLocation(locationObj){
+   let customer = User.getProperty('customerInfo');
+   customer['orders'] += 1;
+   Object.assign(customer['location'], locationObj);
+   User.setProperty('customerInfo', customer, 'Object');
+}
+
 function setup() {
    let order = User.getProperty('order');
    let customer = User.getProperty('customerInfo');
@@ -18,12 +31,18 @@ function setCurrentCategory(category) {
    User.setProperty('order', order, 'Object');
 }
 
+function setPhoneNumber(number) {
+   customer = getInstance('customer');
+   customer['phoneNumber'] = number;
+   User.setProperty('customerInfo', customer, 'Object');
+}
+
 function reset(instance) {
    switch (instance) {
       case 'order':
          let order = {
              products: [],
-             location: '',
+             location: {},
          };
          User.setProperty('order', order, 'Object');
          break;
@@ -77,12 +96,6 @@ function getInstance(instance) {
    }
 }
 
-function setPhoneNumber(number) {
-   customer = getInstance('customer');
-   customer['phoneNumber'] = number;
-   User.setProperty('customerInfo', customer, 'Object');
-}
-
 function productsToObj(productsString) {
    let productsArr = productsString.split('!');
    let productsObj = new Object();
@@ -113,6 +126,8 @@ function getOrderDetails(){
 
 publish({
    customer: {
+      addToOrder: addProductToOrder,
+      setUserLocation: setUserLocation,
       getOrderDetails: getOrderDetails,
       orderIsEmpty: orderIsEmpty,
       phoneNumber: setPhoneNumber,
