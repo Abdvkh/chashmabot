@@ -28,8 +28,8 @@ function saveAsPreviousCommandDetails(command){
 function makeKeyboard(buttonsArray, code){
    let lang = Libs.Lang.get();
    let keyboard = '';
-   let back = code.indexOf('b') > 0;
-   let menu = code.indexOf('m') > 0;
+   let back = code.indexOf('b') > -1;
+   let menu = code.indexOf('m') > -1;
 
    for(i = 1; i <= buttonsArray.length; i++){
       keyboard += buttonsArray[i-1] + ',' ;
