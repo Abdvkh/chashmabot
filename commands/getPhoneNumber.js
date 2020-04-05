@@ -23,7 +23,7 @@ let phoneNumberIsValid = parseInt(phoneNumber) > 998000000000 && parseInt(phoneN
 if (phoneNumberIsValid){
    utils.savePreviousCommand({
       cmd: 'getPhoneNumber',
-      txt: lang.number,
+      txt: lang.enterNumber,
       btns: wordsLikeButton.mainmenu
    });
    shop.customer.phoneNumber(phoneNumber);

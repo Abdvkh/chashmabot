@@ -21,9 +21,9 @@ if (message == wordsLikeButton.mainmenu) {
 if (message == wordsLikeButton.back) {
    let previousCommand = utils.getPreviousCommand();
    let commandToRun = {
-      name: previousCommand.cmd,
-      text: previousCommand.txt,
-      keyboard: previousCommand.btns
+      cmd: previousCommand.cmd,
+      txt: previousCommand.txt,
+      btns: previousCommand.btns
    };
-   utils.runCommandWithKeyboard(commandToRun);
+   return utils.runCommandWithKeyboard(commandToRun);
 }

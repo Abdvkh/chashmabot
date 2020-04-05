@@ -15,7 +15,7 @@ if (message == password) {
    let msg = "Для доваления продуктов в бот используйте данный формат: \n\n" +
              '`{"Категория1": { "Продукт1": {"price": 2000, "photo": "<url>"}}, "Категория2": { "Продукт2": {"price": 3000, "photo": "<url>"}, "Продукт3": {"price": 4000, "photo": "<url>"}}}`';
    Bot.sendMessage(msg);
-   Bot.setProperty('admin', user.telegramid, 'Mumber');
+   Bot.setProperty('admin', user.telegramid, 'Number');
    Bot.runCommand('adding');
 } else {
    Bot.sendMessage("Пароль введен не правильно");

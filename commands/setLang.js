@@ -10,6 +10,7 @@
 CMD*/
 
 let uzLang = {
+   help: "Savollaringiz bolsa: \nBizning chat: @ChashmaChat\n\nBot yaratuvchisi: @Abduvakhidov",
    basket: {
       added: "Narsangiz savatga solindi!",
       string: "Savat",
@@ -44,7 +45,7 @@ let uzLang = {
       buttons: ["Mening joylashuvim"],
       text:"Iltimos yetkazib berish manzilini quyidagi rasmda ko`rsatilganidek jo`nating, yoki yozuv shaklida qoldiring!",
    },
-   mainMenuButtons: ["Buyurtma berish", "Savatni ko`rish", "Mening profilim", "Yordam", "Sozlanma"],
+   mainMenuButtons: ["Buyurtma berish", "Savatni ko`rish", "Yordam", "Sozlanma"],
    moreItems: "Yana biror nima qo`shmoqchimisiz?",
    numberAccepted: "Raqamingiz muvaffaqiyatli qabul qilindi! Raqam: \n",
    numberIncorrect: "Raqamingizni formatga to'g'irlab jo'nating!",
@@ -57,14 +58,12 @@ let uzLang = {
       name: '*Nomi*',
       price: "*Narxi*",
    },
-   super_admin: {
-      buttons: ["Til urnatish", "Korxona yaratish", "Statistika"],
-      text: "Adminkaga xush kelibsiz",
-   },
+   sum: 'so`m',
    wrongInput: 'Hato komanda kiritildi, iltimos tog`girlang'
 };
 
 let ruLang = {
+   help: 'Если у вас есть вопросы: \nНаш чат: @ChashmaChat \n\nБот разработал: @Abduvakhidov',
    basket: {
       added: "Добавлено в корзину!",
       empty: "Корзина пуста",
@@ -99,7 +98,7 @@ let ruLang = {
       buttons: ["Моё местоположение"],
       text: "Пожалуста отправьте вашу геолокация, как показано на данном рисунке, или просто напишите адрес куда осуществляется доставка!",
    },
-   mainMenuButtons: ["Заказать", "Корзина", "Мой профиль", "Помощь", "Настройки"],
+   mainMenuButtons: ["Заказать", "Корзина", "Помощь", "Настройки"],
    moreItems: "Еще чего нибудь желаете?",
    numberAccepted: "Ваш номер был успешно получен! \nНомер: ",
    numberIncorrect: "Перепроверьте и отправьте свой номер заново!",
@@ -112,6 +111,7 @@ let ruLang = {
       name: '*Наименование*',
       price: "*Цена*",
    },
+   sum: 'сум',
    wrongInput: 'Введена неправильная команда',
 };
 

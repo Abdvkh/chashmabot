@@ -36,7 +36,7 @@ function saveCurrentChoice() {
 function sendProductInfo() {
    Bot.sendMessage(
       lang.product.name + ': ' + message +
-      '\n' + lang.product.price + ': ' + itemsObj[message]['price'] + ' сум' +
+      '\n' + lang.product.price + ': ' + itemsObj[message]['price'] + lang.sum +
       '\n\n[↪](' + itemsObj[message]['photo'] + ')@ChashmaBot'
    );
 }

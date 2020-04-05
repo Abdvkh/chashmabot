@@ -123,10 +123,12 @@ function getOrderDetails(){
    if (order['products']) {
       for (i = 0; i < order['products'].length; i++){
          let product = order['products'][i];
-         orderDetails += '\n\n*' + product['name'] + '* | ' + product['count'] + ' x ' + product['price'] + ' = ' + product['count'] * product['price'];
+         orderDetails += '\n\n*' + product['name'] +
+                           '* | ' + product['count'] + ' x ' + product['price'] +
+                           ' = ' + product['count'] * product['price'] + lang.sum;
          sum += product['count'] * product['price'];
       }
-      return orderDetails += '\n' + lang.basket.sum + sum
+      return orderDetails += '\n' + lang.basket.sum + sum + lang.sum;
    }
 }
 

@@ -9,14 +9,13 @@
   aliases: mening joylashuvim, моё местоположение
 CMD*/
 
-let myLocationBtn = utils.makeKeyboard(lang.location.buttons, 'bm');
 Api.sendMessage({
-   chat_id: request.user.telegramid,
+   chat_id: request.char.id,
    text: lang.location.text,
    reply_markup: {
                   keyboard: [
                         [{
-                           text: myLocationBtn, request_location: true
+                           text: lang.location.buttons[0], request_location: true
                         }]
                   ],
                   resize_keyboard: true

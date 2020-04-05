@@ -54,7 +54,7 @@ function showOrderOfUser() {
 }
 
 function showOrderInfoOrEmpty() {
-   if (!shop.basketIsEmpty()){
+   if (!shop.customer.orderIsEmpty()){
       return showOrderOfUser();
    }
    Bot.sendMessage(lang.basket.empty);

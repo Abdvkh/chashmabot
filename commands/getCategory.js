@@ -38,7 +38,7 @@ function setPreviousCommand() {
    let categoryKeyboard = utils.makeKeyboard(categoriesArr, 'bm');
    let previousCommand = {
       cmd: 'getCategory',
-      txt: lang.choice,
+      txt: lang.chooseCategory,
       btns: categoryKeyboard
    };
    utils.savePreviousCommand(previousCommand);

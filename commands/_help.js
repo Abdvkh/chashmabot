@@ -4,7 +4,10 @@
   need_reply:
   auto_retry_time:
   folder:
-  answer: This is help
+  answer:
   keyboard:
   aliases:
 CMD*/
+
+Bot.sendMessage(lang.help);
+Bot.runCommand('getMenuKeyword');

@@ -9,27 +9,37 @@
   aliases:
 CMD*/
 
-let customer = utils.getInstance('customer');
-let order = utils.getInstance('order');
+let customer = shop.getInstance('customer');
+let order = User.getProperty('order');
 let orderDetails = shop.customer.getOrderDetails();
 let admin = Bot.getProperty('admin');
+let latitude = options.location.latitude;
+let longitude = options.location.longitude;
 
-let user_location = {
-   longitude: options.location.longitude,
-   latitude: options.location.latitude
-};
-shop.customer.setUserLocation(user_location);
+order['location']['longitude'] = longitude;
+order['location']['latitude'] = latitude;
+User.setProperty('order', order, 'Object');
+customer['ordersAmount'] += 1;
+User.setProperty('customerInfo', customer, 'Object');
+
+// shop.customer.setUserLocation(user_location);
 
 let keyboard = [
-   {text: 'Принять', command:'order a|' + user.telegramid},
-   {text: 'Отказать', command:'order r|' + user.telegramid},
+   [
+      {title: 'Принять', command:'order a|' + user.telegramid},
+      {title: 'Отказать', command:'order r|' + user.telegramid}
+   ],
+   [
+      {title: 'Получить местоположение', command: 'sendLocationToAdmin ' + longitude + "|" + latitude}
+   ]
 ];
 let requestFromUser = "Заявка от:" + "\n" + "Пользователя: "+
-"[" + customer.name + "](tg://user?id=" + Srting(customer.id) + ")" +
-"\nТелефон: " + String(customer.phoneNumber) +
-'\n\nДетали заказа:\n' + orderDetails +
-'\nТип оплаты: ' + order['paymentType'];
+                     "[" + customer.name + "](tg://user?id=" + customer.id + ")" +
+                     "\nТелефон: " + customer.phoneNumber +
+                     '\n\nДетали заказа:\n' + orderDetails +
+                     '\nТип оплаты: ' + order['paymentType'];
 
 Bot.sendInlineKeyboardToChatWithId(admin, keyboard, requestFromUser);
-Bot.sendMessage(lang.orderAccepted);
+shop.reset('order');
+Bot.sendMessage(lang.orderAccepted + Bot.getProperty('orderNum'));
 Bot.runCommand('/menu');
