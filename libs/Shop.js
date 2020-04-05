@@ -118,7 +118,7 @@ function getOrderDetails(){
       for (i = 0; i < order['products'].length; i++){
          let product = order['products'][i];
          orderDetails += '\n\n*' + product['name'] + '* | ' + product['count'] + ' x ' + product['price'] + ' = ' + product['count'] * product['price'];
-         sum += product['amount'] * product['price'];
+         sum += product['count'] * product['price'];
       }
       return orderDetails += '\n' + lang.basket.sum + sum
    }

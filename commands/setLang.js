@@ -112,7 +112,7 @@ let ruLang = {
       name: '*Наименование*',
       price: "*Цена*",
    },
-   wrongInput: 'Ввеведена неправильная команда',
+   wrongInput: 'Введена неправильная команда',
 };
 
 let level = User.getGroup();

@@ -8,8 +8,7 @@ function getPreviousCommand() {
 //on wrong input sends a message and runs given command
 function onWrongInput(command) {
    let lang = Libs.Lang.get();
-   let wrongInput = wrongInput == undefined ? lang.wrongInput : "Wrong input!";
-   Bot.sendMessage(wrongInput);
+   Bot.sendMessage(lang.wrongInput);
    Bot.runCommand(command);
 }
 

@@ -18,7 +18,7 @@ let itemsObj = goods[curCateg];
 let numbers = '1,2,3,\n4,5,6,\n7,8,9,\n' + wordsLikeButton.back + ',' + wordsLikeButton.mainmenu;
 
 if (Object.keys(itemsObj).includes(item)) {
-   setPreviousCommand();
+   setAsPreviousCommand();
    saveCurrentChoice();
    sendProductInfo();
    nextCommand();

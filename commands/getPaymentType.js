@@ -10,7 +10,7 @@
 CMD*/
 
 if (lang.payment.buttons.includes(message)) {
-   shop.customer.setOrderPaymentType('Click/Payme');
+   shop.customer.setOrderPaymentType(message);
    Bot.runCommand('getLocation');
 } else {
    Bot.runCommand('getPaymentType');

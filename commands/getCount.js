@@ -29,7 +29,7 @@ function addProductToOrder() {
 function nextCommand() {
    utils.runCommandWithKeyboard({
       cmd: 'getAnswer',
-      btns: wordsLikeButton.agr + ',' + lang.order + ","+
+      btns: wordsLikeButton.agr + ',' + wordsLikeButton.send + ","+
                "\n" + wordsLikeButton.mainmenu,
       txt: lang.moreItems
    });

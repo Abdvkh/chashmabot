@@ -1,5 +1,5 @@
 /*CMD
-  command: gotCategory
+  command: getCategory
   help:
   need_reply: true
   auto_retry_time:
@@ -13,21 +13,20 @@ let goods = shop.getInstance('goods');
 let categoriesArr = Object.keys(goods);
 let category = message;
 let categExists = categoriesArr.includes(category);
+let itemsObj = goods[category];
+let itemsArr = Object.keys(itemsObj);
 
 if (categExists){
-   let itemsObj = goods[category];
-   let itemsArr = Object.keys(itemsObj);
-
    if (itemsArr) {
       shop.customer.setCurrentCategory(category);
       setPreviousCommand();
-      nextCommand();
+      nextCommand(itemsArr);
    } else {
       thisCategoryInDevelopment();
    }
 }
 
-function nextCommand() {
+function nextCommand(itemsArr) {
    utils.runCommandWithKeyboard({
       btns: utils.makeKeyboard(itemsArr, 'bm'),
       txt: category,
