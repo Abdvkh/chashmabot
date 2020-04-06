@@ -1,7 +1,7 @@
 /*CMD
   command: sendLocationToAdmin
   help:
-  need_reply: true
+  need_reply: 
   auto_retry_time:
   folder:
   answer:

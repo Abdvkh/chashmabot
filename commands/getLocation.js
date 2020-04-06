@@ -10,7 +10,7 @@
 CMD*/
 
 Api.sendMessage({
-   chat_id: request.char.id,
+   chat_id: request.chat.id,
    text: lang.location.text,
    reply_markup: {
                   keyboard: [

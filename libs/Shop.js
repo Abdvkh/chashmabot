@@ -93,7 +93,7 @@ function getInstance(instance) {
          let customerInfo = User.getProperty('customerInfo');
          if(customerInfo == undefined){
             reset('customer');
-            return Bot.getProperty('customerInfo');
+            return User.getProperty('customerInfo');
          }
          return customerInfo;
          break;
@@ -128,7 +128,7 @@ function getOrderDetails(){
                            ' = ' + product['count'] * product['price'] + lang.sum;
          sum += product['count'] * product['price'];
       }
-      return orderDetails += '\n' + lang.basket.sum + sum + lang.sum;
+      return orderDetails += '\n\n' + lang.basket.sum + sum + lang.sum;
    }
 }
 
