@@ -19,20 +19,20 @@ switch (passedMenuKeyword) {
    case lang.mainMenuButtons[1]://Корзина
       showOrderInfoOrEmpty();
       break;
-   case lang.mainMenuButtons[2]://Профиль
-      Bot.runCommand('/profile');
-      break;
-   case lang.mainMenuButtons[3]://Помощь
+   // case lang.mainMenuButtons[2]://Профиль
+   //    Bot.runCommand('/profile');
+   //    break;
+   case lang.mainMenuButtons[2]://Помощь
       Bot.runCommand('/help');
       break;
-   case lang.mainMenuButtons[4]://Настройки
+   case lang.mainMenuButtons[3]://Настройки
       showUserSettings();
       break;
-   case '/admin':
-      if(level){
-         Bot.runCommand('/admin');
-         break;
-      }
+   // case '/admin':
+   //    if(level){
+   //       Bot.runCommand('/admin');
+   //       break;
+   //    }
    default:
       utils.onWrongInput('/menu');
 }
