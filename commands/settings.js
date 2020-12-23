@@ -5,8 +5,8 @@
   auto_retry_time:
   folder:
   answer:
-  keyboard:
-  aliases:
+  keyboard: язык, til
+  aliases: Настройки
 CMD*/
 
 if (message == wordsLikeButton.lang) {
