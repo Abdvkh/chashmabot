@@ -38,7 +38,7 @@ function setCurrentCategory(category) {
 }
 
 function setPhoneNumber(number) {
-   customer = getInstance('customer');
+   let customer = getInstance('customer');
    customer['phoneNumber'] = number;
    User.setProperty('customerInfo', customer, 'Object');
 }

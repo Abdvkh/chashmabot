@@ -4,7 +4,7 @@
   need_reply: true
   auto_retry_time:
   folder:
-  answer:
+  answer: Настройки
   keyboard: язык, til
   aliases: Настройки
 CMD*/

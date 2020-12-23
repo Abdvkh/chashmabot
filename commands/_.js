@@ -15,3 +15,7 @@ if(request.location){
       options: {location: request.location}
    })
 }
+
+if (['настройки', 'sozlanma'].includes(message.toLowerCase())){
+   Bot.runCommand('settings');
+}
