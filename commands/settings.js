@@ -5,7 +5,7 @@
   auto_retry_time:
   folder:
   answer: Настройки
-  keyboard: язык, til
+  keyboard: Язык, Til, \nГлавное меню
   aliases: Настройки
 CMD*/
 

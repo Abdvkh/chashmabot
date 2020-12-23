@@ -16,6 +16,8 @@ if(request.location){
    })
 }
 
-if (['настройки', 'sozlanma'].includes(message.toLowerCase())){
-   Bot.runCommand('settings');
+if(typeof message === 'string'){
+   if (['настройки', 'sozlanma'].includes(message.toLowerCase())){
+      Bot.runCommand('settings');
+   }
 }
