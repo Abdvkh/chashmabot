@@ -31,10 +31,10 @@ function makeKeyboard(buttonsArray, code){
    let back = code.indexOf('b') > -1;
    let menu = code.indexOf('m') > -1;
 
-   for(i = 1; i <= buttonsArray.length; i++){
+   for(let i = 1; i <= buttonsArray.length; i++){
       keyboard += buttonsArray[i-1] + ',' ;
 
-      if(i % 2 == 0){
+      if(i % 2 === 0){
          keyboard += '\n,';
       }
    }
@@ -49,7 +49,7 @@ function makeKeyboard(buttonsArray, code){
 //checks whether given password is valid or not
 function passwordIsValid(password){
    let pass = Bot.getProperty('password');
-   if(password==pass){return true;}
+   if(password === pass){return true;}
    return false;
 }
 

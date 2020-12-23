@@ -9,12 +9,12 @@
   aliases:
 CMD*/
 
-var customer = shop.getInstance('customer');
-var order = User.getProperty('order');
-var orderDetails = shop.customer.getOrderDetails();
-var admin = Bot.getProperty('admin');
-var latitude = options.location.latitude;
-var longitude = options.location.longitude;
+let customer = shop.getInstance('customer');
+let order = User.getProperty('order');
+let orderDetails = shop.customer.getOrderDetails();
+let admin = Bot.getProperty('admin');
+let latitude = options.location.latitude;
+let longitude = options.location.longitude;
 
 // shop.customer.setUserLocation(user_location);
 increaseCustomerOrdersCount();

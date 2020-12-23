@@ -75,7 +75,7 @@ function getInstance(instance) {
    switch (instance) {
       case 'order':
          let order = User.getProperty('order');
-         if(order == undefined){
+         if(order === undefined){
             reset('order');
             return User.getProperty('order');
          }
@@ -83,7 +83,7 @@ function getInstance(instance) {
          break;
       case 'goods':
          let goods = Bot.getProperty('goods');
-         if(goods == undefined){
+         if(goods === undefined){
             reset('goods');
             return Bot.getProperty('goods');
          }
@@ -91,7 +91,7 @@ function getInstance(instance) {
          break;
       case 'customer':
          let customerInfo = User.getProperty('customerInfo');
-         if(customerInfo == undefined){
+         if(customerInfo === undefined){
             reset('customer');
             return User.getProperty('customerInfo');
          }
@@ -106,8 +106,8 @@ function productsToObj(productsString) {
    let productsArr = productsString.split('!');
    let productsObj = new Object();
 
-   for(i=1; i<=productsArr.length; i++){
-      if(i%2 == 0){
+   for(let i = 1; i<=productsArr.length; i++){
+      if(i % 2 === 0){
          productsObj[productsArr[i-2]] = JSON.parse(productsArr[i-1]);
       }
    }
@@ -121,7 +121,7 @@ function getOrderDetails(){
    let sum = 0;
 
    if (order['products']) {
-      for (i = 0; i < order['products'].length; i++){
+      for (let i = 0; i < order['products'].length; i++){
          let product = order['products'][i];
          orderDetails += '\n\n*' + product['name'] +
                            '* | ' + product['count'] + ' x ' + product['price'] +
